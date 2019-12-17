@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" />
+  <title>LOGIN</title>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+</head>
+
+<body>
+  <div class="container"><%- body %></div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBNEF17RYaE7W0tRFBche1TsR7iRNORA_Q",
+      authDomain: "dec-self.firebaseapp.com",
+      databaseURL: "https://dec-self.firebaseio.com",
+      projectId: "dec-self",
+      storageBucket: "dec-self.appspot.com",
+      messagingSenderId: "432462687749",
+      appId: "1:432462687749:web:063e2040ac1077e265b66c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    $('#btn-sub').click(function(){
+
+      var email = $('#email').val();
+      var password= $('#password').val();
+
+      if(email!="" && password!= ""){
+        var result = firebase.auth().signInWithEmailAndPassword(email,password);
+
+        result.catch(function(error){
+          let errorCode = error.code;
+            let errorMessage = error.MESSAGE;
+            console.log(errorCode);
+            console.log(errorMessage);
+        })
+      }
+      else{
+        window.alert('All fields Required!!!')
+      }
+
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            console.log(user)
+            var emailv = user.email;
+            console.log("User is signed in. with email: " + emailv);
+
+        } else { 
+            console.log("No user is signed in.");
+        }
+    });
+
+  </script>
+</body>
+
+</html>
