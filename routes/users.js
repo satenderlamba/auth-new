@@ -5,14 +5,6 @@ const router = express.Router();
 router.get('/login', (req, res) => res.render('login'));
 
 
-/* ================================================================
-
-  Post request can only be made once we make sure the user is authenticated.
-
-  =================================================================
-
-*/
-
 // router.post('/login', (req, res, next) => {
 //   res.render('dash')
 // });
