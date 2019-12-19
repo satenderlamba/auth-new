@@ -1,7 +1,7 @@
 @font-face {
   font-family: "kessel105w00-heavyregular";
-  src: url("../assets/kessel_105_w00_heavy-webfont.woff2") format("woff2"),
-    url("../assets/kessel_105_w00_heavy-webfont.woff") format("woff");
+  src: url("./assets/kessel_105_w00_heavy-webfont.woff2") format("woff2"),
+    url("./assets/kessel_105_w00_heavy-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
